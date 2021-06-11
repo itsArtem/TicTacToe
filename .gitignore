@@ -1,0 +1,9 @@
+# Project files
+Output/
+
+# Visual Studio files
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
