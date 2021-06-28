@@ -18,10 +18,10 @@ namespace ttt::gfx
 	class TextError final : public std::runtime_error
 	{
 	public:
-		TextError(std::string msg) noexcept;
+		TextError(const std::string &msg) noexcept;
 	};
 
-	inline TextError::TextError(std::string msg) noexcept
+	inline TextError::TextError(const std::string &msg) noexcept
 		: runtime_error{msg}
 	{
 	}

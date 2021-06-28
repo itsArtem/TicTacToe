@@ -88,6 +88,8 @@ namespace ttt::gs
 		SDL_FRect panelDst{};
 
 		gfx::Button pause{game.textureCache[0], SDL_Rect{0, 192, 64, 64}, SDL_Rect{64, 192, 64, 64}, SDL_Rect{128, 192, 64, 64}, SDL_FRect{2.0f, 2.0f, 38.0f, 38.0f}, game.audioCache.getChunk(0)};
+		// Used to make sure that the game will not pause until [esc] has been released. This should probably be handled by some function, but whatever.
+		bool pressedPause{false}; 
 
 		void getInput() noexcept;
 

@@ -11,6 +11,7 @@
 
 namespace ttt
 {
+	// A class for caching sounds and music.
 	class AudioCache final
 	{
 	public:
@@ -29,8 +30,8 @@ namespace ttt
 		void clearChunks() noexcept;
 		void clear() noexcept;
 
-		Mix_Music *getMusic(SizeType index) const noexcept;
-		Mix_Chunk *getChunk(SizeType index) const noexcept;
+		[[nodiscard]] Mix_Music *getMusic(SizeType index) const noexcept;
+		[[nodiscard]] Mix_Chunk *getChunk(SizeType index) const noexcept;
 
 	private:
 		std::vector<std::unique_ptr<Mix_Music, decltype(&Mix_FreeMusic)>> music;

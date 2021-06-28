@@ -23,6 +23,8 @@ namespace ttt::gs
 
 		gfx::Text title{"Pause Menu", game.fontCache[0], {255, 150, 50, 255}, true, game.getRenderer()};
 		std::array<gfx::Button, 2> buttons;
+		// Used to make sure that the game will not resume until [esc] has been released. This should probably be handled by some function, but whatever.
+		bool pressedResume{false};
 	};
 }
 

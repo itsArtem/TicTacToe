@@ -5,15 +5,15 @@
 
 #ifdef TTT_DEBUG
 
-#define TTT_COUT(x) std::cout << x << '\n'
-#define TTT_CERR(x) std::cerr << x << '\n'
-#define TTT_CLOG(x) std::clog << x << '\n'
+#define TTT_COUT(msg) std::cout << msg << '\n'
+#define TTT_CERR(msg) std::cerr << msg << '\n'
+#define TTT_CLOG(msg) std::clog << msg << '\n'
 
 #else
 
-#define TTT_COUT(x)
-#define TTT_CERR(x)
-#define TTT_CLOG(x)
+#define TTT_COUT(msg)
+#define TTT_CERR(msg)
+#define TTT_CLOG(msg)
 
 #endif
 

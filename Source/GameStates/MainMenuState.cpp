@@ -22,6 +22,10 @@ namespace ttt::gs
 	MainMenuState::MainMenuState(Game &game)
 		: game{game}
 	{
+		game.textureCache.clear();
+		game.fontCache.clear();
+		game.audioCache.clear();
+
 		game.textureCache.load("Resources/UiSheet.png", game.getRenderer());
 		game.fontCache.load("Resources/BebasNeue-Regular.ttf", 65);
 		game.fontCache.load("Resources/Renner.ttf", 24);

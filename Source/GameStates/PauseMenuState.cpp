@@ -7,8 +7,13 @@
 
 #include <SDL_video.h>
 #include <SDL_rect.h>
+#include <SDL_keyboard.h>
+#include <SDL_scancode.h>
 
 #include <gsl/util>
+#include <gsl/span>
+
+#include <cstdint>
 
 namespace ttt::gs
 {
@@ -33,13 +38,15 @@ namespace ttt::gs
 		for (gfx::Button &button : buttons)
 			button.update();
 
-		if (buttons[0].wasReleased())
+		const gsl::span<const std::uint8_t, SDL_NUM_SCANCODES> keyboard{SDL_GetKeyboardState(nullptr), SDL_NUM_SCANCODES};
+		if (buttons[0].wasReleased() || pressedResume && !keyboard[SDL_SCANCODE_ESCAPE])
 			game.gameStateStack.pop();
 		else if (buttons[1].wasReleased())
 		{
 			game.gameStateStack.clear();
 			game.gameStateStack.emplace<MainMenuState>(game);
 		}
+		pressedResume = keyboard[SDL_SCANCODE_ESCAPE];
 	}
 
 	void PauseMenuState::render() const noexcept

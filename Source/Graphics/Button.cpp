@@ -76,7 +76,7 @@ namespace ttt::gfx
 		released = pressed && !click && hoveredOver;
 		pressed = click && SDL_PointInRect(&(*click), &bounds);
 
-		if (released)
+		if (sound && released)
 			Mix_PlayChannel(-1, sound, 0);
 	}
 

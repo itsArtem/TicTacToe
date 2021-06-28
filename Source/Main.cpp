@@ -40,10 +40,9 @@ namespace ttt
 int main(int argc, char *argv[])
 {
 	int status{EXIT_SUCCESS};
-	ttt::init();
-
 	try
 	{
+		ttt::init();
 		ttt::Game{}.run();
 	}
 	catch (std::exception &e)

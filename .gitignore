@@ -1,7 +1,10 @@
-# Project files
+# Project files.
 Output/
 
-# Visual Studio files
+# Save file.
+Resources/Score.sav
+
+# Visual Studio files.
 .vs/
 **.sln
 **.vcxproj

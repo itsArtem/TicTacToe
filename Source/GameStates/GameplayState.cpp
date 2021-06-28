@@ -8,10 +8,13 @@
 #include <SDL_video.h>
 #include <SDL_mouse.h>
 #include <SDL_rect.h>
+#include <SDL_keyboard.h>
+#include <SDL_scancode.h>
 #include <SDL_mixer.h>
 
 #include <gsl/pointers>
 #include <gsl/assert>
+#include <gsl/span>
 
 #include <array>
 #include <algorithm>
@@ -221,9 +224,12 @@ namespace ttt::gs
 		}
 
 		board.update();
+
+		const gsl::span<const std::uint8_t, SDL_NUM_SCANCODES> keyboard{SDL_GetKeyboardState(nullptr), SDL_NUM_SCANCODES};
 		pause.update();
-		if (pause.wasReleased())
+		if (pause.wasReleased() || pressedPause && !keyboard[SDL_SCANCODE_ESCAPE])
 			game.gameStateStack.emplace<PauseMenuState>(game);
+		pressedPause = keyboard[SDL_SCANCODE_ESCAPE];
 	}
 
 	void GameplayState::render() const noexcept
